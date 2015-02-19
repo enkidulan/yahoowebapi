@@ -62,3 +62,17 @@ class YahooShoppingAPI(object):
         self.api_request.path.segments.append('itemSearch')
         # TODO: add some params validation???
         self.api_request.args.update(**kwargs)
+
+    @query_yahoo_api
+    def category_acquisition(self, category_id=1, **kwargs):
+        """
+        Category ID acquisition is an API that returns the category name,
+        category structure of Yahoo! Shopping in real time.
+        Developers will be able to obtain these information by
+        specifying the category ID.
+        http://developer.yahoo.co.jp/webapi/shopping/shopping/v1/categorysearch.html
+        """
+        self.api_request.path.segments.append('categorySearch')
+        # TODO: add some params validation???
+        kwargs['category_id'] = category_id   # XXX: use inspect instead of this
+        self.api_request.args.update(**kwargs)
